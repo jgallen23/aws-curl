@@ -12,7 +12,10 @@ suite('fetchPages', function() {
 
     testHosts.forEach(function(host) {
       nock(host)
-        .get(testPath)
+        .filteringPath(function(path) {
+          return '/';
+        })
+        .get('/')
         .reply(200, 'This is a response from '+host+testPath);
     });
 
@@ -28,6 +31,7 @@ suite('fetchPages', function() {
 
         assert.equal(res[index].host, host);
         assert.equal(res[index].path, testPath);
+        assert.equal(res[index].url, host+testPath);
         assert.equal(res[index].data, 'This is a response from '+host+testPath);
 
       });
@@ -44,6 +48,7 @@ suite('fetchPages', function() {
 
         assert.equal(res[index].host, host);
         assert.equal(res[index].path, testPath);
+        assert.equal(res[index].url, host+testPath);
         assert.equal(res[index].data, 'This is a response from '+host+testPath);
 
 
@@ -52,6 +57,26 @@ suite('fetchPages', function() {
       done();
 
     });
+  });
+
+  test('fetch with cache buster', function(done) {
+
+    fetchPages(testHosts, testPath, function(err, res) {
+
+      testHosts.forEach(function(host, index) {
+
+        assert.equal(res[index].host, host);
+        assert.equal(res[index].path, testPath);
+        assert.equal(res[index].data, 'This is a response from '+host+testPath);
+        assert.notEqual(res[index].url.indexOf('?_cb='), -1);
+
+
+      });
+
+      done();
+
+    }, true);
+
   });
 
 });
