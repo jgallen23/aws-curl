@@ -46,9 +46,8 @@ curl(opts, function(err, results) {
       console.log(regex.green);
       console.log('');
       results.forEach(function(result) {
-        var url = result.host + result.path;
         var match = result.data.match(re);
-        console.log('\t'+url.grey);
+        console.log('\t'+result.url.grey);
         console.log('\t'+match[0]);
         console.log('');
       });
