@@ -1,0 +1,8 @@
+{
+  "accessKeyId": "xxx",
+  "secretAccessKey": "xxx",
+  "region": "us-east-1",
+  "path": "/",
+  "filters": [{ "Name": "tag-value", "Values": ["Production"] }],
+  "regex": ["<title>.*</title>", "common.*js", "common.*css"]
+}

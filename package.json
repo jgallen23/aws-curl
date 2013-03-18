@@ -1,0 +1,29 @@
+{
+  "name": "aws-curl",
+  "description": "A cli tool to curl ec2 boxes",
+  "homepage": "https://github.com/jgallen23/aws-curl",
+  "author": "Greg Allen <@jgaui> (http://jga.me)",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jgallen23/aws-curl.git"
+  },
+  "dependencies": {
+    "aws-sdk": "~0.9.5-pre.6",
+    "request": "~2.14.0",
+    "async": "~0.2.6",
+    "rc": "0.0.8",
+    "colors": "~0.6.0-1"
+  },
+  "devDependencies": {
+    "grunt-simple-mocha": "~0.3.2",
+    "grunt": "~0.4.0",
+    "grunt-contrib-watch": "~0.3.1",
+    "grunt-contrib-jshint": "~0.2.0",
+    "mocha": "~1.8.1",
+    "nock": "~0.16.0"
+  },
+  "bin": {
+    "awscurl": "./bin/aws-curl.js"
+  }
+}
