@@ -43,14 +43,20 @@ curl(opts, function(err, results) {
     }
     opts.regex.forEach(function(regex) {
       var re = new RegExp(regex);
-      console.log(regex.green);
+      console.log('Searching for'.grey, regex.green);
+      console.log('-----------------------------------');
       console.log('');
       results.forEach(function(result) {
         var match = result.data.match(re);
-        console.log('\t'+result.url.grey);
-        console.log('\t'+match[0]);
+        console.log(result.url.grey);
+        if (!match) {
+          console.log('No Matches');
+        } else {
+          console.log(match[0]);
+        }
         console.log('');
       });
+      console.log('');
     });
   } else {
     console.log('coming soon');
